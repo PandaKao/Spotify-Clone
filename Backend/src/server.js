@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { clerkMiddleware } from "@clerk/express"
 import { connectDB } from "./lib/db.js";
-import fileUpload from "expres-fileupload";
+import fileUpload from "express-fileupload";
 import path from "path";
 
 import userRoutes from "./routes/userRoute.js";
