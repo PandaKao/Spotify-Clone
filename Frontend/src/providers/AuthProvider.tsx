@@ -20,7 +20,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             try {
                 const token = await getToken();
                 updateApiToken(token);
-            } catch (error: any) {
+            } catch (error) {
                 updateApiToken(null);
                 console.log('Error in auth provider', error);
             } finally {
