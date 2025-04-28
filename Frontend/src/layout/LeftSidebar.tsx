@@ -5,7 +5,7 @@ import { HomeIcon, Library, MessageCircle } from "lucide-react";
 import { SignedIn } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useMusicStore } from "../stores/useMusicStores";
+import { useMusicStore } from "../stores/useMusicStore";
 
 const LeftSidebar = () => {
     const { albums, fetchAlbums, isLoading } = useMusicStore();

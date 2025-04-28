@@ -6,7 +6,7 @@ export const authCallback = async (req, res, next) => {
 
         await User.findOneAndUpdate({ clerkId: id },
             {
-                fullName: `{firstName} ${lastName}`,
+                fullName: `${firstName} ${lastName}`,
                 imageUrl: imageUrl
             },
             {
