@@ -33,47 +33,48 @@ export const getFeaturedSongs = async (req, res, next) => {
     }
 };
 
-export const getTopSongs = async (req, res, next) => {
-    try {
-        const userId = req.user._id;
-        const userTopSongs = await Song.aggregate([
-            {
-                $match: {
-                    "plays.userId": userId
-                }
-            },
-            {
-                $addFields: {
-                    playCount: {
-                        $size: {
-                            $filter: {
-                                input: '$plays',
-                                as: 'play',
-                                cond: { $eq: ['$$play.userId', userId] }
-                            }
-                        }
-                    }
-                }
-            },
-            {
-                $sort: { playCount: -1 }
-            },
-            {
-                $limit: 4
-            },
-            {
-                $project: {
-                    _id: 1,
-                    title: 1,
-                    artist: 1,
-                    imageUrl: 1,
-                    audioUrl: 1,
-                }
-            }
-        ]);
+export const getMadeForYouSongs = async (req, res, next) => {
+	try {
+		const songs = await Song.aggregate([
+			{
+				$sample: { size: 4 },
+			},
+			{
+				$project: {
+					_id: 1,
+					title: 1,
+					artist: 1,
+					imageUrl: 1,
+					audioUrl: 1,
+				},
+			},
+		]);
 
-        res.json(userTopSongs);
-    } catch (error) {
-        next(error);
-    }
+		res.json(songs);
+	} catch (error) {
+		next(error);
+	}
+};
+
+export const getTrendingSongs = async (req, res, next) => {
+	try {
+		const songs = await Song.aggregate([
+			{
+				$sample: { size: 4 },
+			},
+			{
+				$project: {
+					_id: 1,
+					title: 1,
+					artist: 1,
+					imageUrl: 1,
+					audioUrl: 1,
+				},
+			},
+		]);
+
+		res.json(songs);
+	} catch (error) {
+		next(error);
+	}
 };
