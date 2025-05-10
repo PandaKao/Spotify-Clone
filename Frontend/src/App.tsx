@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { AuthenticateWithRedirectCallback } from "@clerk/clerk-react";
 import HomePage from "./pages/HomePage";
 import AuthCallbackPage from "./pages/AuthCallbackPage";
-import MainLayout from "./layout/Mainlayout";
+import MainLayout from "./layout/MainLayout";
 import ChatPage from "./pages/ChatPage";
 import AlbumPage from "./pages/AlbumPage";
 
