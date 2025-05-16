@@ -3,6 +3,7 @@ import { ResizablePanel, ResizablePanelGroup, ResizableHandle } from "@/componen
 import LeftSidebar from "./LeftSidebar";
 import FriendsActivity from "./FriendsActivity";
 import AudioPlayer from "../components/AudioPlayer";
+import { PlayBackControls } from "./PlayBackControls";
 
 const MainLayout = () => {
     const isMobile = false;
@@ -28,6 +29,8 @@ const MainLayout = () => {
                 <FriendsActivity />
             </ResizablePanel>
         </ResizablePanelGroup>
+
+        <PlayBackControls />
 
     </div>
 };
