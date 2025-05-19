@@ -25,7 +25,7 @@ export const PlayBackControls = () => {
         };
 
         audio.addEventListener('timeupdate', updateTime);
-        audio.addEventListener('loadmetadata', updateDuration);
+        audio.addEventListener('loadedmetadata', updateDuration);
         audio.addEventListener('ended', handleEnded);
     }, [currentSong]);
 
@@ -94,11 +94,11 @@ export const PlayBackControls = () => {
                         <Button
                             size="icon"
                             variant="ghost"
-                            className="bg-white hover:text-white text-black rounded-full h-8 w-8"
+                            className="bg-green-500 hover:bg-green-400 text-black rounded-full h-8 w-8"
                             onClick={togglePlay}
                             disabled={!currentSong}
                         >
-                            {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
+                            {isPlaying ? <Pause className="h-5 w-5 text-black" /> : <Play className="h-5 w-5 text-black" />}
                         </Button>
 
                         {/* skip forward button */}
