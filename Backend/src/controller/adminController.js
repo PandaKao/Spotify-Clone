@@ -15,7 +15,18 @@ const uploadToCloudinary = async (file) => {
 };
 
 export const checkAdmin = async (req, res, next) => {
-    res.status(200).json({ admin: true });
+    try {
+        const currentUser = await clerkClient.users.getUser(req.auth.userId);
+        const userEmails = currentUser.emailAddresses.map((e) => e.emailAddress.toLowerCase());
+        const adminEmails = process.env.ADMIN_EMAIL?.toLowerCase();
+
+        const isAdmin = adminEmails && userEmails.includes(adminEmails);
+
+        res.status(200).json({admin: !!isAdmin });
+    } catch (error) {
+        console.error('Error in checkAdmin: ', error);
+        res.status(500).json({admin:false, message: 'Error checking admin status'});
+    }
 };
 
 export const createSong = async (req, res, next) => {
